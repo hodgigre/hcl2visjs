@@ -1,1 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<title>Loblaw Network | Playing with Physics</title>
+
+  <style type="text/css">
+    body {
+      font: 10pt sans;
+    }
+    #mynetwork {
+      float:left;
+      width: 600px;
+      height: 400px;
+      margin:5px;
+      border: 1px solid lightgray;
+    }
+    #config {
+      float:left;
+      width: 300px;
+      height: 600px;
+    }
+	
+	
+ </style>
+ <link href="./dist/vis-network.min.css" rel="stylesheet" type="text/css" />
+ <script type="text/javascript" src="./dist/vis.js"></script>
+ <script type="text/javascript" src="./dist/exampleUtil.js"></script>
+
+ <script type="text/javascript">
+	var nodes = null;
+	var edges = null;
+	var network = null;
+	
+	
+    function draw() {
+		var nodes = [];
+		var edges = [];
+
+		var container = document.getElementById('mynetwork');
+
+
+
+  // The data parameter of the Network constructor is an object which can contain different types of data. 
+// The following properties are supported in the data object: nodes, edges - which are both arrays
+
+var data = {
+	// Nodes typically have an id and label. A node must contain at least a property id.
+  // Nodes can have extra properties, used to define the shape and style of the nodes.
+
+  
+  "nodes": [
+  {
+    "id": "calapi.loblaw.ca",
+    "title": "192.168.1.1",
+    "label": "calapi.loblaw.ca",
+    "chosen": true,
+    
+    "shape": "image",
+    "image": "https://github.com/hodgigre/hcl2visjs/blob/master/img/compute-instance.png?raw=true"
+  },
+  {
+    "id": "exstr01",
+    "label": "gce\ntest\ntest2",
+    'labelHightlightBold': "true",
+    "cid": "calapi.loblaw.ca",
+    
+    "shape": "image",
+    "image": "https://github.com/hodgigre/hcl2visjs/blob/master/img/compute-instance.png?raw=true"},
+    {
+    "id": "exstr02",
+    "label": "gce\ntest\ntest2",
+    'labelHightlightBold': "true",
+    "cid": "calapi.loblaw.ca",
+    
+    "shape": "image",
+    "image": "https://github.com/hodgigre/hcl2visjs/blob/master/img/compute-instance.png?raw=true"}
+
+],
+  // Edges are connections between nodes. 
+  // An edge must at least contain properties from and to, both referring to the id of a node.
+  // Edges can have extra properties, used to define the type and style.
+  
+  edges: [
+  {
+    "from": 1,
+    "to": 2
+  },
+  {
+    "from": 1,
+    "to": 3
+  },
+  {
+    "from": 2,
+    "to": 4
+  },
+  {
+    "from": 2,
+    "to": 5
+  }
+]
+};
+
+  // create a network
+  var container = document.getElementById('mynetwork');
+
+
+  var data = {
+    nodes: data.nodes,
+    edges: data.edges
+  };
+
+	// Options can be used to customize the network.
+	// Options are defined as a JSON object. All options are optional.
+  var options = {};
+  var network = new vis.Network(container, data, options);
+</script>
+</head>
+<body onload="draw();">
+
+<h2>Playing with Physics</h2>
+<div style="width: 700px; font-size:14px; text-align: justify;">
+ Once you have found settings you are happy with, you can supply them to network using the documented physics options.
+</div>
+<br />
 <div id="mynetwork"></div>
+<div id="config"></div>
+
+<p id="selection"></p>
+</body>
+</html>
+
